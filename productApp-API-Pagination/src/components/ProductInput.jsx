@@ -4,6 +4,13 @@ const ProductInput = ({setProduct}) => {
     const [searchInput,setSearchInput] = useState('');
 
     const handleSearch = async () => {
+
+        //if (searchInput.trim() === '') {
+        //     setProduct(allProducts)
+        //     return
+        // }
+
+
         const response = await fetch(`https://dummyjson.com/products/search?q=${searchInput}`);
         const data = await response.json();
         console.log(data.products)
