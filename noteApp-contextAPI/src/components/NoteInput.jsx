@@ -4,9 +4,16 @@ import { useNote } from '../context/NoteProvider'
 const NoteInput = () => {
     const [title, setTitle] = useState('');
     const [desc, setDesc] = useState('');
-
     const { addNote, notes } = useNote();
+
     const handleAddNote = () => {
+
+        if (!title && !desc || title.trim() === '' && desc.trim() === '') {
+            setDesc('');
+            setTitle('');
+            return alert('Please enter title and description');
+        }
+
         const existNotes = notes.find((text) => text.title.toLowerCase() === title.toLowerCase() && text.desc.toLowerCase() === desc.toLowerCase());
         if (existNotes) {
             return alert('Note already exist');
@@ -17,6 +24,7 @@ const NoteInput = () => {
         setTitle('');
         setDesc('');
     }
+
     return (
         <>
             <div className='flex flex-col gap-3'>

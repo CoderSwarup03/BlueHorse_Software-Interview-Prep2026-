@@ -1,9 +1,20 @@
-import React, { createContext, useContext, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
+
 const noteContext = createContext();
 export const useNote = () => useContext(noteContext);
 
 const NoteProvider = ({ children }) => {
-    const [notes, setNotes] = useState([]);
+    // const [notes, setNotes] = useState([]);
+    
+    const [notes, setNotes] = useState(() => {
+        const storeNotes = localStorage.getItem('notes');
+        return storeNotes ? JSON.parse(storeNotes) : [];
+    })
+
+    useEffect(() => {
+        localStorage.setItem('notes', JSON.stringify(notes))
+    },[notes])
+
 
     const addNote = (title, desc) => {
         const newNote = { id: Date.now(), title, desc };
