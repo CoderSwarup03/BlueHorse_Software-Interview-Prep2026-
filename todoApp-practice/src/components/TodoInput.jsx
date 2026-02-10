@@ -6,10 +6,15 @@ const TodoInput = () => {
   const { addTodo } = useTodo();
 
   const handleAdd = () => {
+    if(input.trim() === '' || input === '')  {
+      return alert('Please enter a valid todo')
+    }
+
     addTodo(input)
     console.log(input);
     setInput('')
   }
+  
   return (
     <>
       <h4 className='text-3xl font-bold text-green-500 text-center'>TodoApp Practice</h4>
