@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
 import Cart from './pages/Cart'
 import Menu from './pages/Menu'
+import Order from './components/Order'
 
 const App = () => {
   const [product, setProduct] = useState([]);
@@ -29,9 +30,10 @@ const App = () => {
     <>
       <BrowserRouter>
         <Routes >
-          <Route path='/' element={<Home product={cuurentProduct} totalPages={totalPages} cuurentPage={cuurentPage} setCurrentPage={setCurrentPage} />} />
+          <Route path='/' element={<Home product={cuurentProduct} totalPages={totalPages} cuurentPage={cuurentPage} setCurrentPage={setCurrentPage} setProduct={setProduct} />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/menu' element={<Menu />} />
+          <Route path='/order' element={<Order />} />
         </Routes>
       </BrowserRouter>
     </>

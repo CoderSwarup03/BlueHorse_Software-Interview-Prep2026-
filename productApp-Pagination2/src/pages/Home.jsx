@@ -3,10 +3,10 @@ import Navbar from '../components/Navbar'
 import Pagination from '../components/Pagination'
 import ProductList from '../components/ProductList'
 
-const Home = ({ product, totalPages, cuurentPage, setCurrentPage }) => {
+const Home = ({ product, totalPages, cuurentPage, setCurrentPage, setProduct }) => {
     return (
         <>
-            <Navbar />
+            <Navbar setProduct={setProduct}/>
             <ProductList product={product} />
             <Pagination totalPages={totalPages} cuurentPage={cuurentPage} setCurrentPage={setCurrentPage}/>
         </>
